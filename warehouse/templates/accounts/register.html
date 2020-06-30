@@ -27,7 +27,7 @@
 
   <div class="horizontal-section">
     <div class="site-container">
-      <h1 class="page-title">{% trans title=title %}Create an account on {{ title }}{% endtrans %}</h1>
+      <h1 class="page-title">{% trans title=title %}Create an account on YGY {{ title }}{% endtrans %}</h1>
 
       <form method="POST" action="{{ request.current_route_path() }}" data-controller="password password-match password-strength-gauge password-breach">
         <input name="csrf_token" type="hidden" value="{{ request.session.get_csrf_token() }}">
@@ -66,7 +66,7 @@
             <span class="form-group__required">{% trans %}(required){% endtrans %}</span>
             {% endif %}
           </label>
-          {{ form.email(placeholder=gettext("Your email address"), autocomplete="email", spellcheck="false", required="required", class_="form-group__field", **{"aria-describedby":"email-errors"}) }}
+          {{ form.email(placeholder=gettext("delivery계정아니면 가입못하게 막아야겠네"), autocomplete="email", spellcheck="false", required="required", class_="form-group__field", **{"aria-describedby":"email-errors"}) }}
           <div id="email-errors">
             {% if form.email.errors %}
             <ul class="form-errors" role="alert">

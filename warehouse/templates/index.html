@@ -10,10 +10,12 @@
  # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  # See the License for the specific language governing permissions and
  # limitations under the License.
+ # Modifiers:
+    - maintainers: Custom layout for maintainers section on package detail page.
 -#}
 {% extends "base.html" %}
 
-{% block title_base %}{{ request.registry.settings['site.name'] }} · {% trans %}The Python Package Index{% endtrans %}{% endblock %}
+{% block title_base %}{{ request.registry.settings['site.name'] }} : {% trans %}The Python Package Index{% endtrans %}{% endblock %}
 
 {% macro project_snippet(release) -%}
 <li>
@@ -30,7 +32,7 @@
 {% block brand %}
 <div>
   <a class="site-header__logo" href="{{ request.route_path('index') }}">
-    <img alt="{{ request.registry.settings['site.name'] }}" src="{{ request.static_path('warehouse:static/dist/images/logo-small.svg') }}">
+    <img alt="{{ request.registry.settings['site.name'] }}" src="{{ request.static_path('warehouse:static/dist/images/logo-small.png') }}">
   </a>
 </div>
 {% endblock %}
@@ -42,7 +44,7 @@
 {% if testPyPI %}
   {% set banner = _("Test Python package publishing with the Test Python Package Index") %}
 {% else %}
-  {% set banner = _("Find, install and publish Python packages with the Python Package Index") %}
+  {% set banner = _("대충 DHK Python Package Index(pypi) <br> Private Repository") %}
 {% endif %}
 
 <div class="banner">
@@ -98,27 +100,39 @@
 <div class="horizontal-section">
   <div class="about-pypi">
     <div class="about-pypi__logo">
-      <img alt="" src="{{ request.static_path('warehouse:static/dist/images/logo-large.svg') }}">
+      <img alt="고양이 7계층" src="{{ request.static_path('warehouse:static/dist/images/cat7layer.jpg') }}">
     </div>
     <div class="about-pypi__text">
-      <p class="lede-paragraph">{% trans %}The Python Package Index (PyPI) is a repository of software for the Python programming language.{% endtrans %}</p>
-      <p>
-        {% trans %}PyPI helps you find and install software developed and shared by the Python community.{% endtrans %}
-        <a href="https://packaging.python.org/installing/" title="{% trans %}External link{% endtrans %}" target="_blank" rel="noopener">{% trans %}Learn about installing packages</a>.{% endtrans %}
-      </p>
-      <p>
-        {% trans %}Package authors use PyPI to distribute their software.{% endtrans %}
-        <a href="https://packaging.python.org/tutorials/packaging-projects/" title="{% trans %}External link{% endtrans %}" target="_blank" rel="noopener">{% trans %}Learn how to package your Python code for PyPI</a>.{% endtrans %}
-      </p>
+      <p class="lede-paragraph">{% trans %} 적당히 대충 사용법 정책 블라블 보안이슈관련 코맨트 적는곳 ... .{% endtrans %}</p>
+      <a href="https://docs.python.org/3.6/distutils/packageindex.html#pypirc" target="_blank">pypi 설정 설명하는 공식문서 바로가기 </a>
+      <p>  위설정 안먹힘 basic auth 인증같은 버그있음 token 인증방식 사용해야함...  </p> <a href="https://github.com/pypa/setuptools/issues/941" target="_blank"> 버그 이슈... 안고쳐줌...레거시라 그런듯 하 </a>
+      <p> 위에 설정 마치고 pip install 라이브러리이름 -r ygy_pypi </p>
+
     </div>
   </div>
+
 </div>
+
+<div class="horizontal-section">
+  <div class="about-pypi">
+    <div class="about-pypi__logo">
+      <img alt="" src="{{ request.static_path('warehouse:static/dist/images/logo-large.jpg') }}">
+    </div>
+    <div class="about-pypi__text">
+      <p class="lede-paragraph">{% trans %}일단 허브요Client SDK 관리하는곳 .{% endtrans %}</p>
+      <p>VMS 에서 구현해주신 hubyo Client 라이브러리로 여기 빼기 </p>
+      <p>pip install hubyo-client==0.0.1 -r ygy-pypi</p>
+    </div>
+  </div>
+
+</div>
+
 
 <div class="horizontal-section horizontal-section--grey">
   <div class="site-container">
     <div class="col-half">
       <div class="heading-wsubtitle" id="pypi-trending-packages">
-        <h2 class="heading-wsubtitle__heading">{% trans %}Trending projects{% endtrans %}</h2>
+        <h2 class="heading-wsubtitle__heading">{% trans %}이쪽 기능은 최근 누적 다운로드수 랭킹 보여주는곳인데 우리는 쓸필요 없을듯{% endtrans %}</h2>
         <p class="heading-wsubtitle__subtitle">{% trans %}Trending projects as downloaded by the community{% endtrans %}</p>
       </div>
       <ul class="unstyled" aria-labelledby="pypi-trending-packages">
