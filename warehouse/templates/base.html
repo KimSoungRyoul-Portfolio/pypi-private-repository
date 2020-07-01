@@ -11,7 +11,7 @@
  # See the License for the specific language governing permissions and
  # limitations under the License.
 -#}
-
+<meta http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' http://* 'unsafe-inline'; script-src 'self' http://* 'unsafe-inline' 'unsafe-eval'" />
 {% macro humanize(timestamp, relative="true", time="false") -%}
 <time datetime="{{ timestamp|format_datetime('yyyy-MM-ddTHH:mm:ssZ') }}" data-controller="localized-time" data-localized-time-relative="{{ relative }}" data-localized-time-show-time="{{ time }}">
   {{ timestamp|format_date()}}
